@@ -5,8 +5,7 @@ const ui = require('./ui.js')
 
 const onSelection = function (event) {
   ui.insert(event.target.id)
-  console.log(event)
-  console.log(ui.counter)
+  console.log(event.target.id)
 }
 
 module.exports = {

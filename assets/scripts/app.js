@@ -8,6 +8,7 @@ const events = require('./events')
 // require('./example')
 
 $(() => {
+  $('#0').on('click', events.onSelection)
   $('#1').on('click', events.onSelection)
   $('#2').on('click', events.onSelection)
   $('#3').on('click', events.onSelection)
@@ -16,7 +17,6 @@ $(() => {
   $('#6').on('click', events.onSelection)
   $('#7').on('click', events.onSelection)
   $('#8').on('click', events.onSelection)
-  $('#9').on('click', events.onSelection)
 })
 
 module.exports = {

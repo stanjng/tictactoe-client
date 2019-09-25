@@ -1,4 +1,5 @@
 'use strict'
+// replace these with actual values
 
 let apiUrl
 const apiUrls = {

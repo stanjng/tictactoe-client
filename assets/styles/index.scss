@@ -38,13 +38,14 @@ $font-color: $light;
 .unit {
   align-items: center;
   background-color: $alt-color;
+  border: 1px black;
   color: $font-color;
   display: flex;
   flex-wrap: wrap;
-  height: 195px;
+  height: 200px;
   justify-content: center;
   text-align: center;
-  width: 195px;
+  width: 200px;
 }
 
 .alt-color {

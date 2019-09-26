@@ -104,11 +104,11 @@ const win = function() {
       alert('Player O won!')
       counter = 10
     }
-  } else if (gameBoard[2] && gameBoard[5] && gameBoard[7]) {
-    if (gameBoard[2] === 'X' && gameBoard[5] === 'X' && gameBoard[7] === 'X') {
+  } else if (gameBoard[2] && gameBoard[4] && gameBoard[6]) {
+    if (gameBoard[2] === 'X' && gameBoard[4] === 'X' && gameBoard[6] === 'X') {
       alert('Player X won!')
       counter = 10
-    } else if (gameBoard[2] === 'O' && gameBoard[5] === 'O' && gameBoard[7] === 'O') {
+    } else if (gameBoard[2] === 'O' && gameBoard[4] === 'O' && gameBoard[6] === 'O') {
       alert('Player O won!')
       counter = 10
     }

@@ -35,17 +35,26 @@ $font-color: $light;
   justify-content: center;
 }
 
+.side {
+  background-color: $alt-color;
+  height: 80px;
+}
+
+.side.auth {
+  height: 420px;
+}
+
 .unit {
   align-items: center;
   background-color: $alt-color;
-  border: 1px black;
+  border: 1px solid black;
   color: $font-color;
   display: flex;
   flex-wrap: wrap;
-  height: 200px;
+  height: 199px;
   justify-content: center;
   text-align: center;
-  width: 200px;
+  width: 199px;
 }
 
 .alt-color {

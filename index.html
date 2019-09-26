@@ -15,27 +15,57 @@
 
 <body>
   <div class="container">
-    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <!-- Nav Section -->
     <div class="row">
       <div class="col-2 nav">col-2 nav</div>
       <div class="col-8 nav alt-color">col-8 nav alt-color</div>
       <div class="col-2 nav">col-2 nav</div>
     </div>
 
-    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <!-- Main Windows -->
     <div class="row">
-      <div class="col-md-4 main">col-md-4 box</div>
-        <div class="col-md-8 main">
-          <div class="row">
-            <div class="col-4 unit" id="0"></div>
-            <div class="col-4 unit" id="1"></div>
-            <div class="col-4 unit" id="2"></div>
-            <div class="col-4 unit" id="3"></div>
-            <div class="col-4 unit" id="4"></div>
-            <div class="col-4 unit" id="5"></div>
-            <div class="col-4 unit" id="6"></div>
-            <div class="col-4 unit" id="7"></div>
-            <div class="col-4 unit" id="8"></div>
+      <div class="col-md-4 main">
+
+        <div class="col-12 side auth">
+          Login
+          <form id='sign-in'>
+            <input type="email" name="credentials[email]" placeholder="Enter Email">
+            <input type="password" name="credentials[password]" placeholder="Enter Password">
+            <button class="btn btn-primary btn-sm">Sign In</button>
+          </form>
+          <hr>
+
+          <form id='sign-up'>
+            <input type="email" name="credentials[email]" placeholder="Enter Email">
+            <input type="password" name="credentials[password]" placeholder="Enter Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <button class="btn btn-primary btn-sm">Sign Up</button>
+          </form>
+          <hr>
+
+          <form id='change-pw'>
+            <input type="password" name="passwords[old]" placeholder="Enter Old Password">
+            <input type="password" name="passwords[new]" placeholder="Enter New Password">
+            <button class="btn btn-primary btn-sm">Change Password</button>
+          </form>
+
+        </div>
+
+        <div class="col-12 side" id="turn">Click on any square to begin!</div>
+        <div class="col-12 side" id="display-msgs"></div>
+      </div>
+
+      <div class="col-md-8 main">
+        <div class="row">
+          <div class="col-4 unit" id="0"></div>
+          <div class="col-4 unit" id="1"></div>
+          <div class="col-4 unit" id="2"></div>
+          <div class="col-4 unit" id="3"></div>
+          <div class="col-4 unit" id="4"></div>
+          <div class="col-4 unit" id="5"></div>
+          <div class="col-4 unit" id="6"></div>
+          <div class="col-4 unit" id="7"></div>
+          <div class="col-4 unit" id="8"></div>
         </div>
       </div>
     </div>

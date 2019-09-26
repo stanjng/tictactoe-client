@@ -5,25 +5,19 @@ const store = require('./store.js')
 
 const gameBoard = ['', '', '', '', '', '', '', '', '']
 let counter = 1
-const check = function () {
-  if (gameBoard[0] === gameBoard[1] === gameBoard[2]) {
-    alert('One of the players won')
-  }
-}
 
 const insert = function (event) {
-  if (counter % 2 !== 0) {
+  if (counter < 9 && counter % 2 === 0) {
     insertX(event)
-    check()
-  } else if (counter % 2 === 0) {
+  } else if (counter < 9 && counter % 2 !== 0) {
     insertO(event)
-    check()
   } else if (counter === 9) {
-    alert(`it's a tie!`)
-    counter = 0
+    insertX(event)
+    alert(`No spots left!!`)
   } else {
-    console.log('not sure what happened there')
+    alert(`Sorry, this spot has been taken.`)
   }
+  win()
 }
 
 const insertX = function () {
@@ -50,12 +44,81 @@ const insertO = function () {
   console.log(counter)
 }
 
-console.log(gameBoard)
+const win = function () {
+  if (gameBoard[0] === gameBoard[1] === gameBoard[2]) {
+    if (gameBoard[0] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[0] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[3] === gameBoard[4] === gameBoard[5]) {
+    if (gameBoard[3] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[3] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[6] === gameBoard[7] === gameBoard[8]) {
+    if (gameBoard[6] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[6] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[0] === gameBoard[3] === gameBoard[6]) {
+    if (gameBoard[0] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[0] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[1] === gameBoard[4] === gameBoard[7]) {
+    if (gameBoard[1] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[1] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[2] === gameBoard[5] === gameBoard[8]) {
+    if (gameBoard[2] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[2] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[0] === gameBoard[4] === gameBoard[8]) {
+    if (gameBoard[0] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[0] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else if (gameBoard[2] === gameBoard[4] === gameBoard[6]) {
+    if (gameBoard[2] === 'X') {
+      alert('Player X won!')
+    } else if (gameBoard[2] === 'O') {
+      alert('Player O won!')
+    } else {
+      alert('something happened')
+    }
+  } else {
+    console.log('Keep it up!')
+  }
+}
 
 module.exports = {
   gameBoard,
   counter,
   insert,
   insertO,
-  insertX
+  insertX,
+  win
 }

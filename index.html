@@ -18,19 +18,19 @@
      <!-- Nav Section -->
      <div class="row">
        <div class="col-2 nav">col-2 nav</div>
-       <div class="col-8 nav alt-color">col-8 nav alt-color</div>
+       <div class="col-8 nav alt-color">TIC-TAC-TOE</div>
        <div class="col-2 nav">col-2 nav</div>
      </div>
 
      <!-- Main Windows -->
      <div class="row">
        <div class="col-md-4 main">
-
+         <div class="col-12 side" id="updates"></div>
          <div class="col-12 side auth">
            Login
            <form id='sign-in'>
              <input type="email" name="credentials[email]" placeholder="Enter Email">
-             <input type="password" name="credentials[password]" placeholder="Enter Password"><br>
+             <input type="password" name="credentials[password]" placeholder="Enter Password"><br><br>
              <button class="btn btn-primary btn-sm signed-in">Sign In</button>
            </form>
            <hr>
@@ -38,14 +38,14 @@
            <form id='sign-up'>
              <input type="email" name="credentials[email]" placeholder="Enter Email">
              <input type="password" name="credentials[password]" placeholder="Enter Password">
-             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"><br>
+             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"><br><br>
              <button class="btn btn-primary btn-sm">Sign Up</button>
            </form>
            <hr>
 
            <form id='change-pw'>
              <input type="password" name="passwords[old]" placeholder="Enter Old Password">
-             <input type="password" name="passwords[new]" placeholder="Enter New Password"><br>
+             <input type="password" name="passwords[new]" placeholder="Enter New Password"><br><br>
              <button class="btn btn-primary btn-sm">Change Password</button>
            </form>
            <hr>
@@ -60,11 +60,11 @@
            </section>
          </div>
 
-         <div class="col-12 side" id="updates"></div>
        </div>
 
        <div class="col-md-8 main">
-           <div class="col-12" id="display-msgs">Click on any square to begin!</div>
+         <div class="col-12" id='turn'>Please login!</div>
+         <div class="col-12" id="display-msgs"></div>
 
          <div class="row board">
            <div class="col-4 unit" id="0"></div>
@@ -77,6 +77,17 @@
            <div class="col-4 unit" id="7"></div>
            <div class="col-4 unit" id="8"></div>
          </div>
+       </div>
+
+       <div class="col-12 get">
+
+         <div class="col-2 get select">
+
+           <button class="btn btn-primary btn-sm" id="game-history">Game History</button>
+
+         </div>
+         <div class="col-10 get display" id="response-display"></div>
+
        </div>
      </div>
 

@@ -3,7 +3,44 @@
 const config = require('./config')
 const store = require('./store.js')
 
-const signUp = function (formData) {
+const create = function() {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/games/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: ``
+  })
+}
+
+const update = function() {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cells': {
+          'index': event.target.id,
+          'value': store.game.cells[event.target.id]
+        },
+        'over': false
+      }
+    }
+  })
+}
+
+const retrieve = function () {
+  return $.ajax({
+    url: config.apiUrl + `/games[?over=]`,
+    method: 'GET'
+  })
+}
+
+const signUp = function(formData) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -11,7 +48,7 @@ const signUp = function (formData) {
   })
 }
 
-const signIn = function (formData) {
+const signIn = function(formData) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
@@ -19,7 +56,7 @@ const signIn = function (formData) {
   })
 }
 
-const changePw = function (formData) {
+const changePw = function(formData) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password/',
@@ -30,7 +67,7 @@ const changePw = function (formData) {
   })
 }
 
-const signOut = function () {
+const signOut = function() {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/sign-out/',
@@ -44,5 +81,8 @@ module.exports = {
   signUp,
   signIn,
   signOut,
-  changePw
+  changePw,
+  create,
+  update,
+  retrieve
 }

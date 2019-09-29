@@ -4,6 +4,23 @@ $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $light;
 
+.board {
+  margin: -.6% 0px 1%;
+}
+
+.btn {
+  background-color: $primary;
+}
+
+#display-msgs {
+  align-items: center;
+  background-color: $alt-color;
+  height: 95px;
+  margin-top: 1%;
+  padding-top: 5.5%;
+  text-align: center;
+}
+
 .foot {
   align-items: center;
   background-color: $secondary;
@@ -21,8 +38,8 @@ $font-color: $light;
   color: $font-color;
   display: flex;
   flex-wrap: wrap;
-  height: 600px;
-  justify-content: space-between;
+  height: 750px;
+  justify-content: center;
 }
 
 .nav {
@@ -37,11 +54,15 @@ $font-color: $light;
 
 .side {
   background-color: $alt-color;
-  height: 80px;
-}
+  height: 115px;
+  margin: -5% 0 3%;
 
-.side.auth {
-  height: 420px;
+  &.side.auth {
+    height: 570px;
+    margin-top: 2%;
+    padding-top: 5%;
+    text-align: center;
+  }
 }
 
 .unit {

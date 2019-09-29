@@ -1,80 +1,90 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+ <html>
 
-<head>
-  <title>Example</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <head>
+   <title>Example</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Do not add `link` tags-->
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+   <!-- Do not add `link` tags-->
+   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Do not add `script` tags-->
-  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-</head>
+   <!-- Do not add `script` tags-->
+   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+ </head>
 
-<body>
-  <div class="container">
-    <!-- Nav Section -->
-    <div class="row">
-      <div class="col-2 nav">col-2 nav</div>
-      <div class="col-8 nav alt-color">col-8 nav alt-color</div>
-      <div class="col-2 nav">col-2 nav</div>
-    </div>
+ <body>
+   <div class="container">
+     <!-- Nav Section -->
+     <div class="row">
+       <div class="col-2 nav">col-2 nav</div>
+       <div class="col-8 nav alt-color">col-8 nav alt-color</div>
+       <div class="col-2 nav">col-2 nav</div>
+     </div>
 
-    <!-- Main Windows -->
-    <div class="row">
-      <div class="col-md-4 main">
+     <!-- Main Windows -->
+     <div class="row">
+       <div class="col-md-4 main">
 
-        <div class="col-12 side auth">
-          Login
-          <form id='sign-in'>
-            <input type="email" name="credentials[email]" placeholder="Enter Email">
-            <input type="password" name="credentials[password]" placeholder="Enter Password">
-            <button class="btn btn-primary btn-sm">Sign In</button>
-          </form>
-          <hr>
+         <div class="col-12 side auth">
+           Login
+           <form id='sign-in'>
+             <input type="email" name="credentials[email]" placeholder="Enter Email">
+             <input type="password" name="credentials[password]" placeholder="Enter Password"><br>
+             <button class="btn btn-primary btn-sm signed-in">Sign In</button>
+           </form>
+           <hr>
 
-          <form id='sign-up'>
-            <input type="email" name="credentials[email]" placeholder="Enter Email">
-            <input type="password" name="credentials[password]" placeholder="Enter Password">
-            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-            <button class="btn btn-primary btn-sm">Sign Up</button>
-          </form>
-          <hr>
+           <form id='sign-up'>
+             <input type="email" name="credentials[email]" placeholder="Enter Email">
+             <input type="password" name="credentials[password]" placeholder="Enter Password">
+             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"><br>
+             <button class="btn btn-primary btn-sm">Sign Up</button>
+           </form>
+           <hr>
 
-          <form id='change-pw'>
-            <input type="password" name="passwords[old]" placeholder="Enter Old Password">
-            <input type="password" name="passwords[new]" placeholder="Enter New Password">
-            <button class="btn btn-primary btn-sm">Change Password</button>
-          </form>
+           <form id='change-pw'>
+             <input type="password" name="passwords[old]" placeholder="Enter Old Password">
+             <input type="password" name="passwords[new]" placeholder="Enter New Password"><br>
+             <button class="btn btn-primary btn-sm">Change Password</button>
+           </form>
+           <hr>
+           <form id="sign-out">
+             <button class="btn btn-primary btn-sm signed-out" disabled>Sign Out</button>
+           </form>
+           <hr>
 
-        </div>
+           <section>
+             <div id="auth-msgs">
+             </div>
+           </section>
+         </div>
 
-        <div class="col-12 side" id="turn">Click on any square to begin!</div>
-        <div class="col-12 side" id="display-msgs"></div>
-      </div>
+         <div class="col-12 side" id="updates"></div>
+       </div>
 
-      <div class="col-md-8 main">
-        <div class="row">
-          <div class="col-4 unit" id="0"></div>
-          <div class="col-4 unit" id="1"></div>
-          <div class="col-4 unit" id="2"></div>
-          <div class="col-4 unit" id="3"></div>
-          <div class="col-4 unit" id="4"></div>
-          <div class="col-4 unit" id="5"></div>
-          <div class="col-4 unit" id="6"></div>
-          <div class="col-4 unit" id="7"></div>
-          <div class="col-4 unit" id="8"></div>
-        </div>
-      </div>
-    </div>
+       <div class="col-md-8 main">
+           <div class="col-12" id="display-msgs">Click on any square to begin!</div>
 
-    <!-- Columns are always 50% wide, on mobile and desktop -->
-    <div class="row">
-      <div class="col-12 foot">col-12</div>
-    </div>
-  </div>
-</body>
+         <div class="row board">
+           <div class="col-4 unit" id="0"></div>
+           <div class="col-4 unit" id="1"></div>
+           <div class="col-4 unit" id="2"></div>
+           <div class="col-4 unit" id="3"></div>
+           <div class="col-4 unit" id="4"></div>
+           <div class="col-4 unit" id="5"></div>
+           <div class="col-4 unit" id="6"></div>
+           <div class="col-4 unit" id="7"></div>
+           <div class="col-4 unit" id="8"></div>
+         </div>
+       </div>
+     </div>
 
-</html>
+     <!-- Columns are always 50% wide, on mobile and desktop -->
+     <div class="row">
+       <div class="col-12 foot">col-12</div>
+     </div>
+   </div>
+ </body>
+
+ </html>

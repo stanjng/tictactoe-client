@@ -6,7 +6,7 @@ const store = require('./store.js')
 const gameBoard = ['', '', '', '', '', '', '', '', '']
 let counter = 1
 
-const insert = function(event) {
+const insert = function (event) {
   if (counter < 9 && counter % 2 !== 0) {
     insertX(event)
   } else if (counter < 9 && counter % 2 === 0) {
@@ -21,7 +21,7 @@ const insert = function(event) {
   }
 }
 
-const insertX = function() {
+const insertX = function () {
   if (gameBoard[event.target.id] === '') {
     gameBoard[event.target.id] = 'X'
     $('#' + event.target.id).text(`${gameBoard[event.target.id]}`)
@@ -31,13 +31,13 @@ const insertX = function() {
     $('#display-msgs').html(`Spot already occupied!`)
   }
   win()
-  $('#turn').html('')
-  $('#turn').html(`It's O's turn now`)
+  $('#display-msgs').html('')
+  $('#display-msgs').html(`It's O's turn now`)
   console.log(gameBoard)
   console.log(counter)
 }
 
-const insertO = function() {
+const insertO = function () {
   if (gameBoard[event.target.id] === '') {
     gameBoard[event.target.id] = 'O'
     $('#' + event.target.id).text(`${gameBoard[event.target.id]}`)
@@ -47,13 +47,13 @@ const insertO = function() {
     $('#display-msgs').html(`Spot already occupied!`)
   }
   win()
-  $('#turn').html('')
-  $('#turn').html(`It's X's turn now`)
+  $('#display-msgs').html('')
+  $('#display-msgs').html(`It's X's turn now`)
   console.log(gameBoard)
   console.log(counter)
 }
 
-const win = function() {
+const win = function () {
   if (gameBoard[0] && gameBoard[1] && gameBoard[2]) {
     if (gameBoard[0] === 'X' && gameBoard[1] === 'X' && gameBoard[2] === 'X') {
       counter = 10
@@ -139,11 +139,73 @@ const win = function() {
   }
 }
 
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+const successMessage = function (displayText) {
+  $('#auth-msgs').text(displayText)
+  $('#auth-msgs').removeClass('failure')
+  $('#auth-msgs').addClass('success')
+}
+
+const failureMessage = function (displayText) {
+  $('#auth-msgs').text(displayText)
+  $('#auth-msgs').removeClass('success')
+  $('#auth-msgs').addClass('failure')
+}
+
+const onSignUpSuccess = function () {
+  successMessage('SIGNED UP SUCCESFULLY')
+}
+
+const onSignUpFailure = function () {
+  failureMessage('SIGN UP FAILED')
+}
+
+const onSignInSuccess = function (responseData) {
+  successMessage('Sign in successful!')
+  console.log('Response Data is:', responseData)
+  store.user = responseData.user
+  console.log('Store is:', store)
+  $('.signed-in').attr('disabled', 'true')
+  $('.signed-out').removeAttr('disabled')
+}
+
+const onSignInFailure = function () {
+  failureMessage('Sign in failed. Please try again.')
+}
+
+const onChangePwSuccess = function () {
+  successMessage('Password change successful. Please Login.')
+}
+
+const onChangePwFailure = function () {
+  failureMessage('Password change unsuccesful. Please try again.')
+}
+
+const onSignOutSuccess = function (responseData) {
+  successMessage('Sign out successful.')
+  $('.signed-in').removeAttr('disabled')
+}
+
+const onSignOutFailure = function () {
+  failureMessage('Sign out unsuccessful.')
+}
+
 module.exports = {
   gameBoard,
   counter,
   insert,
   insertO,
   insertX,
-  win
+  win,
+  onSignUpSuccess,
+  onSignUpFailure,
+  onSignInSuccess,
+  onSignInFailure,
+  onChangePwSuccess,
+  onSignOutSuccess,
+  onSignOutFailure,
+  onChangePwFailure
 }

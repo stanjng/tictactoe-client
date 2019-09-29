@@ -17,7 +17,10 @@ $(() => {
   $('#6').on('click', events.onSelection)
   $('#7').on('click', events.onSelection)
   $('#8').on('click', events.onSelection)
+  $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#change-pw').on('submit', events.onChangePw)
+  $('#sign-out').on('submit', events.onSignOut)
 })
 
-module.exports = {
-}
+module.exports = {}

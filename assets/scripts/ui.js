@@ -4,6 +4,10 @@ const store = require('./store.js')
 const events = require('./events.js')
 const scss = require('../styles/index.scss')
 
+// ----------------------------------------------------------------------------
+// API-GAME RECORDING
+// ----------------------------------------------------------------------------
+
 const onCreateSuccess = function (responseData) {
   store.game = responseData.game
   counter = 1
@@ -20,16 +24,16 @@ const onGameRetrievalSuccess = function (gameData) {
 }
 
 const onGameRetrievalFailure = function () {
-  console.log('working on it..but something went wrong')
+  alert('Not sure what happened just now, but please refresh the browser to begin again!')
 }
-
-// Keeping track of player
-let counter = 1
-let currentTurn = null
 
 // ----------------------------------------------------------------------------
 // INSERT FUNCTIONS
 // ----------------------------------------------------------------------------
+
+// Keeping track of player
+let counter = 1
+let currentTurn = null
 
 const insert = function (event) {
   if (counter < 9 && counter % 2 !== 0) {
@@ -44,7 +48,7 @@ const insert = function (event) {
     $('.game-reset').removeAttr('disabled')
   } else if (counter > 9) {
     $('#turn').html('')
-    $('#turn').html('The game is over. Play again!')
+    $('#turn').html('The game is over. Press reset to play again!')
   } else {
     alert(`Something weird happened.`)
   }
@@ -187,9 +191,10 @@ const isGameOver = function () {
 }
 
 // ----------------------------------------------------------------------------
-// LOGIN INFO
+// LOGIN AUTHORIZATION
 // ----------------------------------------------------------------------------
 
+// General Success Messages
 const successMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   setTimeout(function () {
@@ -208,6 +213,7 @@ const failureMessage = function (displayText) {
   $('#auth-msgs').addClass('failure')
 }
 
+// Sign up
 const onSignUpSuccess = function () {
   $('#sign-up').trigger('reset')
   successMessage('SIGNED UP SUCCESFULLY')
@@ -217,16 +223,18 @@ const onSignUpFailure = function () {
   failureMessage('SIGN UP FAILED')
 }
 
+// Sign in
 const onSignInSuccess = function (responseData) {
   successMessage('Sign in successful!')
-  console.log('Response Data is:', responseData)
   store.user = responseData.user
-  console.log('Store is:', store)
+  // Disable: sign in, sign up. Enable: sign out, change pw
   $('.sign-in-toggle').attr('disabled', 'true')
   $('.sign-up-toggle').attr('disabled', 'true')
   $('.sign-out-toggle').removeAttr('disabled')
   $('.change-pw-toggle').removeAttr('disabled')
+  // Clear forms
   $('#sign-in').trigger('reset')
+  // Begin game text displays under 'turn'
   $('#turn').text('')
   $('#turn').text('Click anywhere in this dialogue to create a game!')
 }
@@ -235,22 +243,27 @@ const onSignInFailure = function () {
   failureMessage('Sign in failed. Please try again.')
 }
 
+// Change pw
 const onChangePwSuccess = function () {
+  successMessage('Password change successful. Please Login.')
+  // Clear forms
   $('#change-pw').trigger('reset')
+  // Disable: sign in, sign up. Enable: sign in, sign up
+  $('.sign-out-toggle').attr('disabled', 'true')
   $('.sign-in-toggle').removeAttr('disabled')
   $('.sign-up-toggle').removeAttr('disabled')
-  $('.sign-out-toggle').attr('disabled', 'true')
-  successMessage('Password change successful. Please Login.')
 }
 
 const onChangePwFailure = function () {
   failureMessage('Password change unsuccesful. Please try again.')
 }
 
+// Sign out
 const onSignOutSuccess = function (responseData) {
   successMessage('Sign out successful.')
-  $('.sign-in-toggle').removeAttr('disabled')
+  // Disable: change pw. Enable: sign in
   $('.change-pw-toggle').attr('disabled', 'true')
+  $('.sign-in-toggle').removeAttr('disabled')
 }
 
 const onSignOutFailure = function () {

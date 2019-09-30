@@ -4,22 +4,22 @@ const store = require('./store.js')
 const events = require('./events.js')
 const scss = require('../styles/index.scss')
 
-const onCreateSuccess = function(responseData) {
+const onCreateSuccess = function (responseData) {
   store.game = responseData.game
   counter = 1
   console.log(store.game)
 }
 
-const onUpdateSuccess = function(responseData) {
+const onUpdateSuccess = function (responseData) {
   console.log(store.game)
 }
 
-const onGameRetrievalSuccess = function(gameData) {
+const onGameRetrievalSuccess = function (gameData) {
   console.log(gameData)
   $('#response-display').html(gameData.games.length)
 }
 
-const onGameRetrievalFailure = function() {
+const onGameRetrievalFailure = function () {
   console.log('working on it..but something went wrong')
 }
 
@@ -31,7 +31,7 @@ let currentTurn = null
 // INSERT FUNCTIONS
 // ----------------------------------------------------------------------------
 
-const insert = function(event) {
+const insert = function (event) {
   if (counter < 9 && counter % 2 !== 0) {
     insertX(event)
   } else if (counter < 9 && counter % 2 === 0) {
@@ -50,7 +50,7 @@ const insert = function(event) {
   }
 }
 
-const insertX = function() {
+const insertX = function () {
   if (store.game.cells[event.target.id] === '') {
     store.game.cells[event.target.id] = 'X'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
@@ -68,7 +68,7 @@ const insertX = function() {
   console.log(currentTurn)
 }
 
-const insertO = function() {
+const insertO = function () {
   if (store.game.cells[event.target.id] === '') {
     store.game.cells[event.target.id] = 'O'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
@@ -89,21 +89,21 @@ const insertO = function() {
 // ----------------------------------------------------------------------------
 // WINNING CONDITIONS
 // ----------------------------------------------------------------------------
-const xWins = function() {
+const xWins = function () {
   counter = 10
   $('#turn').html('')
   $('#display-msgs').html('X wins!')
   $('.game-reset').removeAttr('disabled')
 }
 
-const oWins = function() {
+const oWins = function () {
   counter = 10
   $('#turn').html('')
   $('#display-msgs').html('O wins!')
   $('.game-reset').removeAttr('disabled')
 }
 
-const win = function() {
+const win = function () {
   if ($('#0').html() !== '' && $('#0').html() === $('#1').html() && $('#1').html() === $('#2').html()) {
     if ($('#0').html() === 'X') {
       xWins()
@@ -177,7 +177,7 @@ const win = function() {
 // END OF GAME
 // ----------------------------------------------------------------------------
 
-const isGameOver = function() {
+const isGameOver = function () {
   if (counter === 10) {
     store.game.over = true
   } else {
@@ -190,61 +190,70 @@ const isGameOver = function() {
 // LOGIN INFO
 // ----------------------------------------------------------------------------
 
-const successMessage = function(displayText) {
+const successMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
+  setTimeout(function () {
+    $('#auth-msgs').html('')
+  }, 2000)
   $('#auth-msgs').removeClass('failure')
   $('#auth-msgs').addClass('success')
 }
 
-const failureMessage = function(displayText) {
+const failureMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
+  setTimeout(function () {
+    $('#auth-msgs').hide()
+  }, 2000)
   $('#auth-msgs').removeClass('success')
   $('#auth-msgs').addClass('failure')
 }
 
-const onSignUpSuccess = function() {
+const onSignUpSuccess = function () {
   $('#sign-up').trigger('reset')
   successMessage('SIGNED UP SUCCESFULLY')
 }
 
-const onSignUpFailure = function() {
+const onSignUpFailure = function () {
   failureMessage('SIGN UP FAILED')
 }
 
-const onSignInSuccess = function(responseData) {
+const onSignInSuccess = function (responseData) {
   successMessage('Sign in successful!')
   console.log('Response Data is:', responseData)
   store.user = responseData.user
   console.log('Store is:', store)
-  $('.signed-in').attr('disabled', 'true')
-  $('.signed-up').attr('disabled', 'true')
-  $('.signed-out').removeAttr('disabled')
+  $('.sign-in-toggle').attr('disabled', 'true')
+  $('.sign-up-toggle').attr('disabled', 'true')
+  $('.sign-out-toggle').removeAttr('disabled')
+  $('.change-pw-toggle').removeAttr('disabled')
   $('#sign-in').trigger('reset')
   $('#turn').text('')
   $('#turn').text('Click anywhere in this dialogue to create a game!')
 }
 
-const onSignInFailure = function() {
+const onSignInFailure = function () {
   failureMessage('Sign in failed. Please try again.')
 }
 
-const onChangePwSuccess = function() {
+const onChangePwSuccess = function () {
   $('#change-pw').trigger('reset')
-  $('.signed-in').removeAttr('disabled')
-  $('.signed-up').removeAttr('disabled')
+  $('.sign-in-toggle').removeAttr('disabled')
+  $('.sign-up-toggle').removeAttr('disabled')
+  $('.sign-out-toggle').attr('disabled', 'true')
   successMessage('Password change successful. Please Login.')
 }
 
-const onChangePwFailure = function() {
+const onChangePwFailure = function () {
   failureMessage('Password change unsuccesful. Please try again.')
 }
 
-const onSignOutSuccess = function(responseData) {
+const onSignOutSuccess = function (responseData) {
   successMessage('Sign out successful.')
-  $('.signed-in').removeAttr('disabled')
+  $('.sign-in-toggle').removeAttr('disabled')
+  $('.change-pw-toggle').attr('disabled', 'true')
 }
 
-const onSignOutFailure = function() {
+const onSignOutFailure = function () {
   failureMessage('Sign out unsuccessful.')
 }
 

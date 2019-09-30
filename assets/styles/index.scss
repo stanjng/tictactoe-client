@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
-$primary: #7851a9;
+$primary: #5182a9;
 $primary-light: scale-color($primary, $lightness: 95%);
-$alt-color: #5182a9;
+$alt-color: #7851a9;
 $alt-color-light: scale-color($alt-color, $lightness: 95%);
 $body-bg-color: $gray-200;
 $font-color: $light;
@@ -100,6 +100,12 @@ $font-color: $light;
   margin-top: 1%;
   padding-top: 2%;
   text-align: center;
+}
+
+.reset {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .side {

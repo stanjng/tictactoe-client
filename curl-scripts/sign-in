@@ -1,3 +1,5 @@
+EMAIL=1@sj.com PWD=sj
+
 curl "https://tic-tac-toe-wdi.herokuapp.com/sign-in" \
   --include \
   --request POST \

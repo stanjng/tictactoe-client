@@ -23,6 +23,7 @@ $(() => {
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-pw').on('submit', events.onChangePw)
   $('#sign-out').on('submit', events.onSignOut)
+  $('.game-reset').on('click', events.onCreate)
 })
 
 module.exports = {}

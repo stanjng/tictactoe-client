@@ -5,8 +5,7 @@
    <title>Example</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <!-- Do not add `link` tags-->
-   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+   <!-- Do not add \ut icon" type="image/x-icon" href="favicon.ico">
 
    <!-- Do not add `script` tags-->
    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -25,7 +24,11 @@
      <!-- Main Windows -->
      <div class="row">
        <div class="col-md-4 main">
-         <div class="col-12 side" id="updates"></div>
+         <div class="col-12 side reset">
+           <form>
+             <button class="btn btn-primary btn-sm game-reset" disabled>Reset Game!</button>
+           </form>
+         </div>
          <div class="col-12 side auth">
 
            <form id='sign-in'>
@@ -39,7 +42,7 @@
              <input type="email" name="credentials[email]" placeholder="Enter Email">
              <input type="password" name="credentials[password]" placeholder="Enter Password">
              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"><br><br>
-             <button class="btn btn-primary btn-sm">Sign Up</button>
+             <button class="btn btn-primary btn-sm signed-up">Sign Up</button>
            </form>
            <hr>
 

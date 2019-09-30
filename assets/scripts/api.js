@@ -14,7 +14,7 @@ const create = function () {
   })
 }
 
-const update = function () {
+const update = function (index, value, gameOver) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game.id,
@@ -24,23 +24,22 @@ const update = function () {
     data: {
       'game': {
         'cells': {
-          'index': event.target.id,
-          'value': store.game.cells
+          'index': index,
+          'value': value
         },
-        'over': store.game.over
+        'over': gameOver // store.game.over
       }
     }
   })
 }
 
-const retrieve = function (formData) {
+const retrieve = function () {
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + `games?over=true`,
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: formData
+    }
   })
 }
 

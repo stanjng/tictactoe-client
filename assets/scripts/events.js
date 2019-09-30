@@ -7,6 +7,13 @@ const ui = require('./ui.js')
 // Game engine
 
 const onCreate = function () {
+  event.preventDefault()
+  $('#turn').text(`You'll be playing as X. Please go first!`)
+  for (let i = 0; i <= 8; i++) {
+    $('#' + i).html('')
+  }
+  $('#display-msgs').html('')
+  console.log(ui.counter)
   api.create()
     .then(ui.onCreateSuccess)
 }
@@ -66,6 +73,13 @@ const onSignOut = function (event) {
     .catch(ui.onSignOutFailure)
 }
 
+const onReset = function () {
+  event.preventDefault()
+  api.create()
+    .then(ui.onResetGameSuccess)
+    .then(ui.onResetGameFailure)
+}
+
 module.exports = {
   onCreate,
   onSignUp,
@@ -73,5 +87,6 @@ module.exports = {
   onChangePw,
   onSignOut,
   onSelection,
-  onGameRetrieval
+  onGameRetrieval,
+  onReset
 }

@@ -1,6 +1,5 @@
 'use strict'
 
-const app = require('./app.js')
 const store = require('./store.js')
 
 const onCreateSuccess = function (responseData) {
@@ -13,8 +12,18 @@ const onUpdateSuccess = function (responseData) {
   console.log(store.game)
 }
 
-const onGameRetrievalSuccess = function (response) {
-  $('#response-display').append('response')
+const onGameRetrievalSuccess = function (formData) {
+  console.log(formData)
+  formData.games.forEach(game => {
+    const gameHTML = (`
+      <h4>ID: ${game.id}</h4>
+      <p>Cells: ${game.cells}</p>
+      <p>Game Over?: ${game.over}</p>
+      <p>Email: ${game.player_x.email}</p>
+      <br>
+      `)
+    $('#response-display').append(gameHTML)
+  })
 }
 
 const onGameRetrievalFailure = function () {
@@ -160,27 +169,27 @@ const win = function () {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-const successMessage = function(displayText) {
+const successMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   $('#auth-msgs').removeClass('failure')
   $('#auth-msgs').addClass('success')
 }
 
-const failureMessage = function(displayText) {
+const failureMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   $('#auth-msgs').removeClass('success')
   $('#auth-msgs').addClass('failure')
 }
 
-const onSignUpSuccess = function() {
+const onSignUpSuccess = function () {
   successMessage('SIGNED UP SUCCESFULLY')
 }
 
-const onSignUpFailure = function() {
+const onSignUpFailure = function () {
   failureMessage('SIGN UP FAILED')
 }
 
-const onSignInSuccess = function(responseData) {
+const onSignInSuccess = function (responseData) {
   successMessage('Sign in successful!')
   console.log('Response Data is:', responseData)
   store.user = responseData.user
@@ -191,24 +200,24 @@ const onSignInSuccess = function(responseData) {
   $('#turn').text('Click anywhere in this dialogue to create a game!')
 }
 
-const onSignInFailure = function() {
+const onSignInFailure = function () {
   failureMessage('Sign in failed. Please try again.')
 }
 
-const onChangePwSuccess = function() {
+const onChangePwSuccess = function () {
   successMessage('Password change successful. Please Login.')
 }
 
-const onChangePwFailure = function() {
+const onChangePwFailure = function () {
   failureMessage('Password change unsuccesful. Please try again.')
 }
 
-const onSignOutSuccess = function(responseData) {
+const onSignOutSuccess = function (responseData) {
   successMessage('Sign out successful.')
   $('.signed-in').removeAttr('disabled')
 }
 
-const onSignOutFailure = function() {
+const onSignOutFailure = function () {
   failureMessage('Sign out unsuccessful.')
 }
 

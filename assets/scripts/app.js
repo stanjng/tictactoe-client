@@ -18,7 +18,7 @@ $(() => {
   $('#6').on('click', events.onSelection)
   $('#7').on('click', events.onSelection)
   $('#8').on('click', events.onSelection)
-  $('#game-history').on('submit', events.onGameRetrieval)
+  $('#get-history').on('click', events.onGameRetrieval)
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-pw').on('submit', events.onChangePw)

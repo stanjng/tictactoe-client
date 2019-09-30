@@ -6,12 +6,12 @@ const ui = require('./ui.js')
 // ---------------------------------------------------------------------------//
 // Game engine
 
-const onCreate = function() {
+const onCreate = function () {
   api.create()
     .then(ui.onCreateSuccess)
 }
 
-const onSelection = function(event) {
+const onSelection = function (event) {
   ui.insert()
   ui.isGameOver()
   api.update(event.target.id, ui.currentTurn, ui.isGameOver)
@@ -30,7 +30,7 @@ const onGameRetrieval = function (event) {
 // ---------------------------------------------------------------------------//
 // Sign-up, in, out & change pw functions to the server
 
-const onSignUp = function(event) {
+const onSignUp = function (event) {
   event.preventDefault()
   console.log('Sign up is processing')
   const form = event.target // going to be whatever element (form object in our webpage) we were listening for!
@@ -41,7 +41,7 @@ const onSignUp = function(event) {
     .catch(ui.onSignUpFailure)
 }
 
-const onSignIn = function(event) {
+const onSignIn = function (event) {
   event.preventDefault()
   const form = event.target // going to be whatever element (form object in our webpage) we were listening for!
   const formData = getFormFields(form)
@@ -50,7 +50,7 @@ const onSignIn = function(event) {
     .catch(ui.onSignInFailure)
 }
 
-const onChangePw = function(event) {
+const onChangePw = function (event) {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
@@ -59,7 +59,7 @@ const onChangePw = function(event) {
     .catch(ui.onChangePwFailure)
 }
 
-const onSignOut = function(event) {
+const onSignOut = function (event) {
   event.preventDefault()
   api.signOut() // the singular variant of index
     .then(ui.onSignOutSuccess)

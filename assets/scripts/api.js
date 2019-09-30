@@ -3,7 +3,7 @@
 const config = require('./config')
 const store = require('./store.js')
 
-const create = function() {
+const create = function () {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games/',
@@ -14,7 +14,7 @@ const create = function() {
   })
 }
 
-const update = function() {
+const update = function () {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game.id,
@@ -25,22 +25,26 @@ const update = function() {
       'game': {
         'cells': {
           'index': event.target.id,
-          'value': store.game.cells[event.target.id]
+          'value': store.game.cells
         },
-        'over': false
+        'over': store.game.over
       }
     }
   })
 }
 
-const retrieve = function () {
+const retrieve = function (formData) {
   return $.ajax({
-    url: config.apiUrl + `/games[?over=]`,
-    method: 'GET'
+    method: 'GET',
+    url: config.apiUrl + `games?over=true`,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
   })
 }
 
-const signUp = function(formData) {
+const signUp = function (formData) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -48,7 +52,7 @@ const signUp = function(formData) {
   })
 }
 
-const signIn = function(formData) {
+const signIn = function (formData) {
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
@@ -56,7 +60,7 @@ const signIn = function(formData) {
   })
 }
 
-const changePw = function(formData) {
+const changePw = function (formData) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password/',
@@ -67,7 +71,7 @@ const changePw = function(formData) {
   })
 }
 
-const signOut = function() {
+const signOut = function () {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/sign-out/',

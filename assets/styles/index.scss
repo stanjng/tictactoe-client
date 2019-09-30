@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
 $primary: #7851a9;
 $primary-light: scale-color($primary, $lightness: 95%);
 $alt-color: #5182a9;
@@ -62,6 +63,7 @@ $font-color: $light;
 
   &.display {
     background-color: $primary-light;
+    flex-direction: column;
     height: 270px;
   }
 }
@@ -83,6 +85,8 @@ $font-color: $light;
   border: 1px solid $white;
   color: $primary;
   display: flex;
+  font-family: 'Poiret One', sans-serif;
+  font-size: 50px;
   height: 75px;
   justify-content: center;
 }
@@ -107,6 +111,7 @@ $font-color: $light;
   &.side.auth {
     height: 602px;
     margin-top: -5%;
+    padding-top: 6%;
     text-align: center;
   }
 }

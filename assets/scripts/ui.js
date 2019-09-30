@@ -2,6 +2,7 @@
 
 const store = require('./store.js')
 const events = require('./events.js')
+const scss = require('../styles/index.scss')
 
 const onCreateSuccess = function(responseData) {
   store.game = responseData.game
@@ -37,7 +38,10 @@ const insert = function(event) {
     insertO(event)
   } else if (counter === 9) {
     insertX(event)
-    alert(`No spots left!! Game over.`)
+    counter = 10
+    $('#turn').html('')
+    $('#display-msgs').html(`It's a tie!`)
+    $('.game-reset').removeAttr('disabled')
   } else if (counter > 9) {
     $('#turn').html('')
     $('#turn').html('The game is over. Play again!')
@@ -100,56 +104,72 @@ const oWins = function() {
 }
 
 const win = function() {
-  if (store.game.cells[0] && store.game.cells[1] && store.game.cells[2]) {
-    if (store.game.cells[0] === 'X' && store.game.cells[1] === 'X' && store.game.cells[2] === 'X') {
+  if ($('#0').html() !== '' && $('#0').html() === $('#1').html() && $('#1').html() === $('#2').html()) {
+    if ($('#0').html() === 'X') {
       xWins()
-    } else if (store.game.cells[0] === 'O' && store.game.cells[1] === 'O' && store.game.cells[2] === 'O') {
+    } else if ($('#0').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[3] && store.game.cells[4] && store.game.cells[5]) {
-    if (store.game.cells[3] === 'X' && store.game.cells[4] === 'X' && store.game.cells[5] === 'X') {
+  } else if ($('#3').html() !== '' && $('#3').html() === $('#4').html() && $('#4').html() === $('#5').html()) {
+    if ($('#3').html() === 'X') {
       xWins()
-    } else if (store.game.cells[3] === 'O' && store.game.cells[4] === 'O' && store.game.cells[5] === 'O') {
+    } else if ($('#3').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) {
-    if (store.game.cells[6] === 'X' && store.game.cells[7] === 'X' && store.game.cells[8] === 'X') {
+  } else if ($('#6').html() !== '' && $('#6').html() === $('#7').html() && $('#7').html() === $('#8').html()) {
+    if ($('#6').html() === 'X') {
       xWins()
-    } else if (store.game.cells[6] === 'O' && store.game.cells[7] === 'O' && store.game.cells[8] === 'O') {
+    } else if ($('#3').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[0] && store.game.cells[3] && store.game.cells[6]) {
-    if (store.game.cells[0] === 'X' && store.game.cells[3] === 'X' && store.game.cells[6] === 'X') {
+  } else if ($('#0').html() !== '' && $('#0').html() === $('#3').html() && $('#3').html() === $('#6').html()) {
+    if ($('#0').html() === 'X') {
       xWins()
-    } else if (store.game.cells[0] === 'O' && store.game.cells[3] === 'O' && store.game.cells[6] === 'O') {
+    } else if ($('#0').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[1] && store.game.cells[4] && store.game.cells[7]) {
-    if (store.game.cells[1] === 'X' && store.game.cells[4] === 'X' && store.game.cells[7] === 'X') {
+  } else if ($('#1').html() !== '' && $('#1').html() === $('#4').html() && $('#4').html() === $('#7').html()) {
+    if ($('#1').html() === 'X') {
       xWins()
-    } else if (store.game.cells[1] === 'O' && store.game.cells[4] === 'O' && store.game.cells[7] === 'O') {
+    } else if ($('#1').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[2] && store.game.cells[5] && store.game.cells[8]) {
-    if (store.game.cells[2] === 'X' && store.game.cells[5] === 'X' && store.game.cells[8] === 'X') {
+  } else if ($('#2').html() !== '' && $('#2').html() === $('#5').html() && $('#5').html() === $('#8').html()) {
+    if ($('#2').html() === 'X') {
       xWins()
-    } else if (store.game.cells[2] === 'O' && store.game.cells[5] === 'O' && store.game.cells[8] === 'O') {
+    } else if ($('#2').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[0] && store.game.cells[4] && store.game.cells[8]) {
-    if (store.game.cells[0] === 'X' && store.game.cells[4] === 'X' && store.game.cells[8] === 'X') {
+  } else if ($('#0').html() !== '' && $('#0').html() === $('#4').html() && $('#4').html() === $('#8').html()) {
+    if ($('#3').html() === 'X') {
       xWins()
-    } else if (store.game.cells[0] === 'O' && store.game.cells[4] === 'O' && store.game.cells[8] === 'O') {
+    } else if ($('#3').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
-  } else if (store.game.cells[2] && store.game.cells[4] && store.game.cells[6]) {
-    if (store.game.cells[2] === 'X' && store.game.cells[4] === 'X' && store.game.cells[6] === 'X') {
+  } else if ($('#2').html() !== '' && $('#2').html() === $('#4').html() && $('#4').html() === $('#6').html()) {
+    if ($('#2').html() === 'X') {
       xWins()
-    } else if (store.game.cells[2] === 'O' && store.game.cells[4] === 'O' && store.game.cells[6] === 'O') {
+    } else if ($('#2').html() === 'O') {
       oWins()
+    } else {
+      alert('Something went wrong!')
     }
   } else {
-    console.log(store.game)
+    console.log(`It's still going`)
   }
 }
 

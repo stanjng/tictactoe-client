@@ -29,10 +29,13 @@ I followed the recommended [plan](https://git.generalassemb.ly/ga-wdi-boston/gam
 
 ### Future Improvements
 
+- I want to remove my alerts and console.logs!
 - I want to allow players to choose their symbols.
 - I would like to add a cpu player.
 - I want to add animations to interactable elements.
 - I want to further stylize the application.
+- I want to further debug the game engine.
+- I want to further debug the login system.
 
 ## Images
 

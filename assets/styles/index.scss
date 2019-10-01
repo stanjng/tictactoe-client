@@ -7,6 +7,10 @@ $alt-color-light: scale-color($alt-color, $lightness: 95%);
 $body-bg-color: $gray-200;
 $font-color: $light;
 
+body {
+  background-color: $primary;
+}
+
 .board {
   margin: -.6% 0 1%;
 }
@@ -40,6 +44,7 @@ $font-color: $light;
 .foot {
   align-items: flex-end;
   background-color: $primary;
+  border: 1px solid $primary-light;
   color: $primary;
   display: flex;
   color: $primary-light;
@@ -52,6 +57,7 @@ $font-color: $light;
 .get {
   align-items: center;
   background-color: $primary;
+  border: 1px solid $primary-light;
   color: $primary;
   display: flex;
   height: 10vh;
@@ -157,6 +163,8 @@ $font-color: $light;
 
 .alt-color {
   background-color: $primary-light;
+  border-top: 1px solid $primary;
+  border-bottom: 1px solid $primary;
   color: $primary;
 }
 

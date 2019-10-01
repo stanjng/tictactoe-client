@@ -20,7 +20,10 @@ const onUpdateSuccess = function (responseData) {
 
 const onGameRetrievalSuccess = function (gameData) {
   console.log(gameData)
-  $('#response-display').html(gameData.games.length)
+  $('#response-display').html(`Total number of games played: ${gameData.games.length}`)
+  setTimeout(function () {
+    $('#response-display').html('')
+  }, 4000)
 }
 
 const onGameRetrievalFailure = function () {
@@ -36,17 +39,17 @@ let counter = 1
 let currentTurn = null
 
 const insert = function (event) {
-  if (counter < 9 && counter % 2 !== 0) {
+  if (counter <= 9 && counter % 2 !== 0) {
     insertX(event)
   } else if (counter < 9 && counter % 2 === 0) {
     insertO(event)
   } else if (counter === 9) {
     insertX(event)
-    counter = 10
+    counter++
     $('#turn').html('')
-    $('#display-msgs').html(`It's a tie!`)
     $('.game-reset').removeAttr('disabled')
   } else if (counter > 9) {
+    win()
     $('#turn').html('')
     $('#turn').html('The game is over. Press reset to play again!')
   } else {
@@ -59,13 +62,13 @@ const insertX = function () {
     store.game.cells[event.target.id] = 'X'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
     counter++
+    $('#turn').html('')
+    $('#turn').html(`It's O's turn now`)
   } else {
     $('#display-msgs').html('')
     $('#display-msgs').html(`Spot already occupied!`)
   }
   win()
-  $('#turn').html('')
-  $('#turn').html(`It's O's turn now`)
   currentTurn = 'O'
   console.log(store.game.cells)
   console.log(counter)
@@ -77,13 +80,13 @@ const insertO = function () {
     store.game.cells[event.target.id] = 'O'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
     counter++
+    $('#turn').html('')
+    $('#turn').html(`It's X's turn now`)
   } else if (store.game.cells[event.target.id]) {
     $('#display-msgs').html('')
     $('#display-msgs').html(`Spot already occupied!`)
   }
   win()
-  $('#turn').html('')
-  $('#turn').html(`It's X's turn now`)
   currentTurn = 'X'
   console.log(store.game.cells)
   console.log(counter)
@@ -111,69 +114,140 @@ const win = function () {
   if ($('#0').html() !== '' && $('#0').html() === $('#1').html() && $('#1').html() === $('#2').html()) {
     if ($('#0').html() === 'X') {
       xWins()
+      $('#0').css('background-color', 'black')
+      $('#1').css('background-color', 'black')
+      $('#2').css('background-color', 'black')
     } else if ($('#0').html() === 'O') {
       oWins()
+      $('#0').css('background-color', 'black')
+      $('#1').css('background-color', 'black')
+      $('#2').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#3').html() !== '' && $('#3').html() === $('#4').html() && $('#4').html() === $('#5').html()) {
     if ($('#3').html() === 'X') {
       xWins()
+      $('#3').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#5').css('background-color', 'black')
     } else if ($('#3').html() === 'O') {
       oWins()
+      $('#3').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#5').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#6').html() !== '' && $('#6').html() === $('#7').html() && $('#7').html() === $('#8').html()) {
     if ($('#6').html() === 'X') {
       xWins()
-    } else if ($('#3').html() === 'O') {
+      $('#6').css('background-color', 'black')
+      $('#7').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
+    } else if ($('#6').html() === 'O') {
       oWins()
+      $('#6').css('background-color', 'black')
+      $('#7').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#0').html() !== '' && $('#0').html() === $('#3').html() && $('#3').html() === $('#6').html()) {
     if ($('#0').html() === 'X') {
       xWins()
+      $('#0').css('background-color', 'black')
+      $('#3').css('background-color', 'black')
+      $('#6').css('background-color', 'black')
     } else if ($('#0').html() === 'O') {
       oWins()
+      $('#0').css('background-color', 'black')
+      $('#3').css('background-color', 'black')
+      $('#6').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#1').html() !== '' && $('#1').html() === $('#4').html() && $('#4').html() === $('#7').html()) {
     if ($('#1').html() === 'X') {
       xWins()
+      $('#1').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#7').css('background-color', 'black')
     } else if ($('#1').html() === 'O') {
       oWins()
+      $('#1').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#7').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#2').html() !== '' && $('#2').html() === $('#5').html() && $('#5').html() === $('#8').html()) {
     if ($('#2').html() === 'X') {
       xWins()
+      $('#2').css('background-color', 'black')
+      $('#5').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
     } else if ($('#2').html() === 'O') {
       oWins()
+      $('#2').css('background-color', 'black')
+      $('#5').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#0').html() !== '' && $('#0').html() === $('#4').html() && $('#4').html() === $('#8').html()) {
-    if ($('#3').html() === 'X') {
+    if ($('#0').html() === 'X') {
       xWins()
-    } else if ($('#3').html() === 'O') {
+      $('#0').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
+    } else if ($('#0').html() === 'O') {
       oWins()
+      $('#0').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else if ($('#2').html() !== '' && $('#2').html() === $('#4').html() && $('#4').html() === $('#6').html()) {
     if ($('#2').html() === 'X') {
       xWins()
+      $('#2').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#6').css('background-color', 'black')
     } else if ($('#2').html() === 'O') {
       oWins()
+      $('#2').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#6').css('background-color', 'black')
     } else {
       alert('Something went wrong!')
     }
   } else {
-    console.log(`It's still going`)
+    if (
+      $('#0').html() !== '' &&
+      $('#1').html() !== '' &&
+      $('#2').html() !== '' &&
+      $('#3').html() !== '' &&
+      $('#4').html() !== '' &&
+      $('#5').html() !== '' &&
+      $('#6').html() !== '' &&
+      $('#7').html() !== '' &&
+      $('#8').html() !== ''
+    ) {
+      $('#display-msgs').html(`It's a tie!`)
+      $('#turn').html(``)
+      $('.game-reset').removeAttr('disabled')
+      $('#0').css('background-color', 'black')
+      $('#1').css('background-color', 'black')
+      $('#2').css('background-color', 'black')
+      $('#3').css('background-color', 'black')
+      $('#4').css('background-color', 'black')
+      $('#5').css('background-color', 'black')
+      $('#6').css('background-color', 'black')
+      $('#7').css('background-color', 'black')
+      $('#8').css('background-color', 'black')
+    }
   }
 }
 
@@ -198,7 +272,7 @@ const isGameOver = function () {
 const successMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   setTimeout(function () {
-    $('#auth-msgs').html('')
+    $('#auth-msgs').text('')
   }, 2000)
   $('#auth-msgs').removeClass('failure')
   $('#auth-msgs').addClass('success')
@@ -207,7 +281,7 @@ const successMessage = function (displayText) {
 const failureMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   setTimeout(function () {
-    $('#auth-msgs').hide()
+    $('#auth-msgs').text()
   }, 2000)
   $('#auth-msgs').removeClass('success')
   $('#auth-msgs').addClass('failure')
@@ -220,6 +294,7 @@ const onSignUpSuccess = function () {
 }
 
 const onSignUpFailure = function () {
+  $('#sign-up').trigger('reset')
   failureMessage('SIGN UP FAILED')
 }
 
@@ -240,6 +315,7 @@ const onSignInSuccess = function (responseData) {
 }
 
 const onSignInFailure = function () {
+  $('#sign-in').trigger('reset')
   failureMessage('Sign in failed. Please try again.')
 }
 
@@ -250,11 +326,13 @@ const onChangePwSuccess = function () {
   $('#change-pw').trigger('reset')
   // Disable: sign in, sign up. Enable: sign in, sign up
   $('.sign-out-toggle').attr('disabled', 'true')
+  $('.change-pw-toggle').attr('disabled', 'true')
   $('.sign-in-toggle').removeAttr('disabled')
   $('.sign-up-toggle').removeAttr('disabled')
 }
 
 const onChangePwFailure = function () {
+  $('#change-pw').trigger('reset')
   failureMessage('Password change unsuccesful. Please try again.')
 }
 

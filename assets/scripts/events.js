@@ -10,9 +10,9 @@ const onCreate = function () {
   event.preventDefault()
   $('#turn').text(`You'll be playing as X. Please go first!`)
   for (let i = 0; i <= 8; i++) {
-    $('#' + i).html('')
+    $('#' + i).html('').css('background-color', '#f6f9fb')
   }
-  $('#display-msgs').html('')
+  $('#display-msgs').text('')
   console.log(ui.counter)
   api.create()
     .then(ui.onCreateSuccess)

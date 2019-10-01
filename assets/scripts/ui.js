@@ -11,15 +11,12 @@ const scss = require('../styles/index.scss')
 const onCreateSuccess = function (responseData) {
   store.game = responseData.game
   counter = 1
-  console.log(store.game)
 }
 
 const onUpdateSuccess = function (responseData) {
-  console.log(store.game)
 }
 
 const onGameRetrievalSuccess = function (gameData) {
-  console.log(gameData)
   $('#response-display').html(`Total number of games played: ${gameData.games.length}`)
   setTimeout(function () {
     $('#response-display').html('')
@@ -70,9 +67,6 @@ const insertX = function () {
   }
   win()
   currentTurn = 'O'
-  console.log(store.game.cells)
-  console.log(counter)
-  console.log(currentTurn)
 }
 
 const insertO = function () {
@@ -88,9 +82,6 @@ const insertO = function () {
   }
   win()
   currentTurn = 'X'
-  console.log(store.game.cells)
-  console.log(counter)
-  console.log(currentTurn)
 }
 
 // ----------------------------------------------------------------------------

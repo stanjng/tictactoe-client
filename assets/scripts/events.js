@@ -13,7 +13,6 @@ const onCreate = function () {
     $('#' + i).html('').css('background-color', '#f6f9fb')
   }
   $('#display-msgs').text('')
-  console.log(ui.counter)
   api.create()
     .then(ui.onCreateSuccess)
 }
@@ -27,7 +26,6 @@ const onSelection = function (event) {
 
 const onGameRetrieval = function (event) {
   event.preventDefault()
-  console.log(`I'm trying to process your request. In onGameRetrieval!`)
   api.retrieve()
     // Testing out the ajax response
     .then(ui.onGameRetrievalSuccess) // no parenthesis after the onIndexSuccess or else it runs synch. It'll be invoked by event handler when it's ready.
@@ -39,10 +37,8 @@ const onGameRetrieval = function (event) {
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('Sign up is processing')
   const form = event.target // going to be whatever element (form object in our webpage) we were listening for!
   const formData = getFormFields(form)
-  console.log(formData)
   api.signUp(formData) // the singular variant of index
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)

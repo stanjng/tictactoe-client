@@ -36,7 +36,7 @@ const update = function (index, value, gameOver) {
 const retrieve = function () {
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + `games?over=true`,
+    url: config.apiUrl + `/games?over=true`,
     headers: {
       Authorization: 'Token token=' + store.user.token
     }

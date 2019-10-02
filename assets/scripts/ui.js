@@ -11,10 +11,11 @@ const scss = require('../styles/index.scss')
 const onCreateSuccess = function (responseData) {
   store.game = responseData.game
   counter = 1
+  $('#display-msgs').html('')
+  $('#display-msgs').html(`You'll be playing as X. Please go first!`)
 }
 
-const onUpdateSuccess = function (responseData) {
-}
+const onUpdateSuccess = function (responseData) {}
 
 const onGameRetrievalSuccess = function (gameData) {
   $('#response-display').html(`Total number of games played: ${gameData.games.length}`)
@@ -43,12 +44,20 @@ const insert = function (event) {
   } else if (counter === 9) {
     insertX(event)
     counter++
-    $('#turn').html('')
+    $('#display-msgs').html('')
     $('.game-reset').removeAttr('disabled')
-  } else if (counter > 9) {
+  } else if (counter === 10) {
     win()
-    $('#turn').html('')
-    $('#turn').html('The game is over. Press reset to play again!')
+    $('#display-msgs').html('')
+    $('#display-msgs').html('The game is over. Press "Start New Game" to play again!')
+  } else if (counter === 11) {
+    win()
+    $('#display-msgs').html('')
+    $('#display-msgs').html('Please sign-in to start a new game!')
+  } else if (counter === 12) {
+    win()
+    $('#display-msgs').html('')
+    $('#display-msgs').html('Click "Start New Game" to begin!')
   } else {
     alert(`Something weird happened.`)
   }
@@ -59,8 +68,8 @@ const insertX = function () {
     store.game.cells[event.target.id] = 'X'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
     counter++
-    $('#turn').html('')
-    $('#turn').html(`It's O's turn now`)
+    $('#display-msgs').html('')
+    $('#display-msgs').html(`It's O's turn now`)
   } else {
     $('#display-msgs').html('')
     $('#display-msgs').html(`Spot already occupied!`)
@@ -74,8 +83,8 @@ const insertO = function () {
     store.game.cells[event.target.id] = 'O'
     $('#' + event.target.id).text(`${store.game.cells[event.target.id]}`)
     counter++
-    $('#turn').html('')
-    $('#turn').html(`It's X's turn now`)
+    $('#display-msgs').html('')
+    $('#display-msgs').html(`It's X's turn now`)
   } else if (store.game.cells[event.target.id]) {
     $('#display-msgs').html('')
     $('#display-msgs').html(`Spot already occupied!`)
@@ -89,15 +98,15 @@ const insertO = function () {
 // ----------------------------------------------------------------------------
 const xWins = function () {
   counter = 10
-  $('#turn').html('')
-  $('#display-msgs').html('X wins!')
+  $('#display-msgs').html('')
+  $('#display-msgs').html('X wins! Press "Start New Game" to play again!')
   $('.game-reset').removeAttr('disabled')
 }
 
 const oWins = function () {
   counter = 10
-  $('#turn').html('')
-  $('#display-msgs').html('O wins!')
+  $('#display-msgs').html('')
+  $('#display-msgs').html('O wins! Press "Start New Game" to play again!')
   $('.game-reset').removeAttr('disabled')
 }
 
@@ -226,8 +235,7 @@ const win = function () {
       $('#7').html() !== '' &&
       $('#8').html() !== ''
     ) {
-      $('#display-msgs').html(`It's a tie!`)
-      $('#turn').html(``)
+      $('#display-msgs').html(``)
       $('.game-reset').removeAttr('disabled')
       $('#0').css('background-color', 'black')
       $('#1').css('background-color', 'black')
@@ -238,6 +246,7 @@ const win = function () {
       $('#6').css('background-color', 'black')
       $('#7').css('background-color', 'black')
       $('#8').css('background-color', 'black')
+      $('#display-msgs').html(`It's a tie! Press "Start New Game" to play again!`)
     }
   }
 }
@@ -272,7 +281,7 @@ const successMessage = function (displayText) {
 const failureMessage = function (displayText) {
   $('#auth-msgs').text(displayText)
   setTimeout(function () {
-    $('#auth-msgs').text()
+    $('#auth-msgs').text('')
   }, 2000)
   $('#auth-msgs').removeClass('success')
   $('#auth-msgs').addClass('failure')
@@ -281,12 +290,12 @@ const failureMessage = function (displayText) {
 // Sign up
 const onSignUpSuccess = function () {
   $('#sign-up').trigger('reset')
-  successMessage('SIGNED UP SUCCESFULLY')
+  successMessage('Sign up successful!')
 }
 
 const onSignUpFailure = function () {
   $('#sign-up').trigger('reset')
-  failureMessage('SIGN UP FAILED')
+  failureMessage('Sign up failed.')
 }
 
 // Sign in
@@ -297,12 +306,15 @@ const onSignInSuccess = function (responseData) {
   $('.sign-in-toggle').attr('disabled', 'true')
   $('.sign-up-toggle').attr('disabled', 'true')
   $('.sign-out-toggle').removeAttr('disabled')
+  $('.game-reset-toggle').removeAttr('disabled')
   $('.change-pw-toggle').removeAttr('disabled')
+  $('.get-history-toggle').removeAttr('disabled')
   // Clear forms
   $('#sign-in').trigger('reset')
   // Begin game text displays under 'turn'
-  $('#turn').text('')
-  $('#turn').text('Click anywhere in this dialogue to create a game!')
+  $('#display-msgs').text('')
+  $('#display-msgs').text('Click "Start New Game" to begin!')
+  counter = 12
 }
 
 const onSignInFailure = function () {
@@ -332,7 +344,20 @@ const onSignOutSuccess = function (responseData) {
   successMessage('Sign out successful.')
   // Disable: change pw. Enable: sign in
   $('.change-pw-toggle').attr('disabled', 'true')
+  $('.get-history-toggle').attr('disabled', 'true')
+  $('.game-reset').attr('disabled', 'true')
+  $('.sign-out-toggle').attr('disabled', 'true')
+  $('.game-reset-toggle').attr('disabled', 'true')
   $('.sign-in-toggle').removeAttr('disabled')
+  $('.sign-up-toggle').removeAttr('disabled')
+  // Clear game board upon sign out
+  for (let i = 0; i <= 8; i++) {
+    $('#' + i).html('').css('background-color', '#e8f4ff')
+  }
+  $('#display-msgs').text('')
+  $('#display-msgs').text('Please sign-in to start a new game!')
+  // Stop game board from functioning
+  counter = 11
 }
 
 const onSignOutFailure = function () {

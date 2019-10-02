@@ -2,13 +2,13 @@
 const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const events = require('./events.js')
 
 // ---------------------------------------------------------------------------//
 // Game engine
 
 const onCreate = function () {
   event.preventDefault()
-  $('#turn').text(`You'll be playing as X. Please go first!`)
   for (let i = 0; i <= 8; i++) {
     $('#' + i).html('').css('background-color', '#f6f9fb')
   }

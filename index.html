@@ -26,7 +26,7 @@
        <div class="col-md-4 main">
          <div class="col-12 side reset">
            <form>
-             <button class="btn btn-primary btn-lg btn-block game-reset" disabled>Reset Game!</button>
+             <button class="btn btn-primary btn-lg btn-block game-reset-toggle" disabled>Start New Game!</button>
            </form>
          </div>
          <div class="col-12 side auth">
@@ -35,8 +35,7 @@
              <div class="msgs" id="auth-msgs">
              </div>
            </section>
-
-<hr>
+          <hr>
            <form id='sign-in'>
              <input type="email" name="credentials[email]" placeholder="Enter Email">
              <input type="password" name="credentials[password]" placeholder="Enter Password"><br><br>
@@ -67,19 +66,18 @@
        </div>
 
        <div class="col-md-8 main">
-         <div class="col-12" id='turn'>Please login!</div>
-         <div class="col-12" id="display-msgs"></div>
+         <div class="col-12" id="display-msgs">Please sign-in to start a new game!</div>
 
          <div class="row board">
-           <div class="col-4 unit" id="0"></div>
-           <div class="col-4 unit" id="1"></div>
-           <div class="col-4 unit" id="2"></div>
-           <div class="col-4 unit" id="3"></div>
-           <div class="col-4 unit" id="4"></div>
-           <div class="col-4 unit" id="5"></div>
-           <div class="col-4 unit" id="6"></div>
-           <div class="col-4 unit" id="7"></div>
-           <div class="col-4 unit" id="8"></div>
+           <div class="col-4 unit 0" id="0"></div>
+           <div class="col-4 unit 1" id="1"></div>
+           <div class="col-4 unit 2" id="2"></div>
+           <div class="col-4 unit 3" id="3"></div>
+           <div class="col-4 unit 4" id="4"></div>
+           <div class="col-4 unit 5" id="5"></div>
+           <div class="col-4 unit 6" id="6"></div>
+           <div class="col-4 unit 7" id="7"></div>
+           <div class="col-4 unit 8" id="8"></div>
          </div>
        </div>
 
@@ -87,7 +85,7 @@
 
          <div class="col-3 get select">
 
-           <button class="btn btn-primary btn-sm" id="get-history">Game History</button>
+           <button class="btn btn-primary btn-sm get-history-toggle" id="get-history" disabled>Game History</button>
 
          </div>
          <div class="col-9 get display overflow-auto" id="response-display"></div>

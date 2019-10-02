@@ -8,7 +8,7 @@ const events = require('./events')
 // require('./example')
 
 $(() => {
-  $('#turn').on('click', events.onCreate)
+  $('.game-reset-toggle').on('click', events.onCreate)
   $('#0').on('click', events.onSelection)
   $('#1').on('click', events.onSelection)
   $('#2').on('click', events.onSelection)

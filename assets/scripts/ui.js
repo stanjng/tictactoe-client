@@ -330,8 +330,21 @@ const onChangePwSuccess = function () {
   // Disable: sign in, sign up. Enable: sign in, sign up
   $('.sign-out-toggle').attr('disabled', 'true')
   $('.change-pw-toggle').attr('disabled', 'true')
+  $('.change-pw-toggle').attr('disabled', 'true')
+  $('.get-history-toggle').attr('disabled', 'true')
+  $('.game-reset').attr('disabled', 'true')
+  $('.sign-out-toggle').attr('disabled', 'true')
+  $('.game-reset-toggle').attr('disabled', 'true')
   $('.sign-in-toggle').removeAttr('disabled')
   $('.sign-up-toggle').removeAttr('disabled')
+  // Clear game board upon sign out
+  for (let i = 0; i <= 8; i++) {
+    $('#' + i).html('').css('background-color', '#e8f4ff')
+  }
+  $('#display-msgs').text('')
+  $('#display-msgs').text('Please sign-in to start a new game!')
+  // Stop game board from functioning
+  counter = 11
 }
 
 const onChangePwFailure = function () {

@@ -2,7 +2,6 @@
 const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const events = require('./events.js')
 
 // ---------------------------------------------------------------------------//
 // Game engine
@@ -73,7 +72,7 @@ const onReset = function () {
   event.preventDefault()
   api.create()
     .then(ui.onResetGameSuccess)
-    .then(ui.onResetGameFailure)
+    .catch(ui.onResetGameFailure)
 }
 
 module.exports = {

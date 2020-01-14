@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('./store.js')
-const events = require('./events.js')
 const scss = require('../styles/index.scss')
 
 // ----------------------------------------------------------------------------

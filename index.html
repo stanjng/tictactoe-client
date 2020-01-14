@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+   <title>TIC TAC TOE</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Do not add \ut icon" type="image/x-icon" href="favicon.ico">
+
+   <!-- Do not add `script` tags-->
+   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+ </head>
+
+ <body>
+   <div class="container">
+     <!-- Nav Section -->
+     <div class="row">
+       <div class="col-4 nav alt-font-color">Tic</div>
+       <div class="col-4 nav alt-color">Tac</div>
+       <div class="col-4 nav alt-font-color">Toe</div>
+     </div>
+
+     <!-- Main Windows -->
+     <div class="row">
+       <div class="col-md-4 main">
+         <div class="col-12 side reset">
+           <form>
+             <button class="btn btn-primary btn-lg btn-block game-reset-toggle" disabled>Start New Game!</button>
+           </form>
+         </div>
+         <div class="col-12 side auth">
+
+           <section>
+             <div class="msgs" id="auth-msgs">
+             </div>
+           </section>
+           <form id='sign-in'>
+             Sign In<br>
+             <input type="email" class="sign-in-toggle" name="credentials[email]" placeholder="Enter Email">
+             <input type="password" class="sign-in-toggle" name="credentials[password]" placeholder="Enter Password"><br>
+             <button class="btn btn-primary btn-sm sign-in-toggle">Sign In</button>
+           </form>
+           <br>
+           <form id='sign-up'>
+             Sign Up<br>
+             <input type="email" class="sign-up-toggle" name="credentials[email]" placeholder="Enter Email">
+             <input type="password" class="sign-up-toggle" name="credentials[password]" placeholder="Enter Password">
+             <input type="password" class="sign-up-toggle" name="credentials[password_confirmation]" placeholder="Confirm Password"><br>
+             <button class="btn btn-primary btn-sm sign-up-toggle">Sign Up</button>
+           </form>
+           <br>
+           <form id='change-pw'>
+             Change Password<br>
+             <input type="password" class="change-pw-toggle" name="passwords[old]" placeholder="Enter Old Password" disabled>
+             <input type="password" class="change-pw-toggle" name="passwords[new]" placeholder="Enter New Password" disabled><br>
+             <button class="btn btn-primary btn-sm change-pw-toggle" disabled>Change Password</button>
+           </form>
+           <hr>
+           <form id="sign-out">
+             <button class="btn btn-primary btn-sm sign-out-toggle" disabled>Sign Out</button>
+           </form>
+
+         </div>
+
+       </div>
+
+       <div class="col-md-8 main">
+         <div class="col-12" id="display-msgs">Please sign-in to start a new game!</div>
+
+         <div class="row board">
+           <div class="col-4 unit 0" id="0"></div>
+           <div class="col-4 unit 1" id="1"></div>
+           <div class="col-4 unit 2" id="2"></div>
+           <div class="col-4 unit 3" id="3"></div>
+           <div class="col-4 unit 4" id="4"></div>
+           <div class="col-4 unit 5" id="5"></div>
+           <div class="col-4 unit 6" id="6"></div>
+           <div class="col-4 unit 7" id="7"></div>
+           <div class="col-4 unit 8" id="8"></div>
+         </div>
+       </div>
+
+       <div class="col-12 get">
+
+         <div class="col-3 get select">
+
+           <button class="btn btn-primary btn-sm get-history-toggle" id="get-history" disabled>Game History</button>
+
+         </div>
+         <div class="col-9 get display overflow-auto" id="response-display"></div>
+
+       </div>
+     </div>
+
+     <!-- Columns are always 50% wide, on mobile and desktop -->
+     <div class="row">
+       <div class="col-12 foot">
+
+         Created by Stan Jiang<br>
+         Supported by all of you
+
+       </div>
+     </div>
+   </div>
+ </body>
+
+ </html>
